@@ -1,0 +1,18 @@
+# PyTorch datasets
+data/
+
+# Model checkpoints
+saved_models/
+
+# Python caching
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.ipynb_checkpoints/
+
+# IDE / System files
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db
