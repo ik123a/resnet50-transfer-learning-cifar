@@ -63,4 +63,4 @@ The experiments evaluate test accuracy across the three strategies:
 ---
 
 ## 💳 License
-This project is open-source and available under the [MIT License](LICENSE).
+No LICENSE file has been added to this repository yet, so no license is currently granted. Add one before reusing this code.
