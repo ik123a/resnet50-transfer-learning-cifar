@@ -12,9 +12,11 @@ flowchart LR
     Train --> Modes[Three ResNet50 fine-tuning modes]
     Validate --> Tune[Learning-rate search and checkpoints]
     Modes --> Tune
-    Tune --> Select[Rank configurations by validation accuracy]
-    Select --> Test[Report held-out test metrics]
-    Test --> Plots[Confusion matrices and learning curves]
+    Tune --> V[Checkpoint validation accuracy]
+    Tune --> T[Per-mode test metrics]
+    V --> Select[Rank configurations using validation only]
+    T --> Plots[Comparison reports and plots]
+    Select --> Inference[Selected model for example predictions]
 ```
 
 | Mode | Trainable parameters |
@@ -45,7 +47,7 @@ Running the dataset/model cells downloads CIFAR and pretrained ImageNet weights.
 
 The configuration cell exposes `DATASET_NAME`, `BATCH_SIZE`, `IMAGE_SIZE`, `VAL_SPLIT`, `RANDOM_SEED`, learning-rate candidates and epoch limits.
 
-- Images are resized to224Ã—224 and normalized with ImageNet mean/std.
+- Images are resized to 224 x 224 and normalized with ImageNet mean/std.
 - Training/validation use disjoint indices from the CIFAR training split; validation/test use non-augmented transforms.
 - Default seed is 42. Seeding does not establish bitwise determinism across all GPU/library versions.
 - `FAST_RUN` defaults to true without CUDA. It limits training to 200 examples, validation to 50 and test to 50, and uses one epoch. It still downloads the full datasets and pretrained weights.
